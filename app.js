@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production"){
+  require('dotenv').config();
+}
+
 const express = require("express");
 const app = express();
 const methodOverride = require("method-override");
@@ -10,6 +14,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 const path = require("path");
 app.set("views", path.join(__dirname, "/views"));
@@ -44,9 +49,9 @@ async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/airbnb");
 }
 
-app.get("/", (req, res) => {
-  res.send("HII, it's working!");
-});
+// app.get("/", (req, res) => {
+//   res.send("HII, it's working!");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());
