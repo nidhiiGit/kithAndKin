@@ -44,19 +44,57 @@
 
         </div>
 
-        <div class="mb-3 col-md-8">
+        <div class="mb-3 col-md-4 dropdown">
+          <label for="category" class="form-label">Category</label>
+          <div>
+            <button
+            id="categoryDropdown"
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Choose Category
+          </button>
+          
+
+          <ul
+            class="dropdown-menu form-control"
+            required
+          >
+            <li><a class="dropdown-item" href="Trending" value="Trending">Trending</a></li>
+            <li><a class="dropdown-item" href="Rooms" value="Rooms">Rooms</a></li>
+            <li><a class="dropdown-item" href="Iconic cities" value="Iconic cities">Iconic cities</a></li>
+            <li><a class="dropdown-item" href="Serene Peaks" value="Serene Peaks">Serene Peaks</a></li>
+            <li><a class="dropdown-item" href="Amazing pools" value="Amazing pools">Amazing pools</a></li>
+            <li><a class="dropdown-item" href="Beach" value="Beach">Beach</a></li>
+            <li><a class="dropdown-item" href="Castles" value="Castles">Castles</a></li>
+            <li><a class="dropdown-item" href="Camping" value="Camping">Camping</a></li>
+            <li><a class="dropdown-item" href="Farming" value="Farming">Farming</a></li>
+            <li><a class="dropdown-item" href="Tent house" value="Tent house">Tent house</a></li>
+            <li><a class="dropdown-item" href="Alpine Slopes" value="Alpine Slopes">Alpine Slopes</a></li>
+            <li><a class="dropdown-item" href="Ancestral abodes" value="Ancestral abodes">Ancestral abodes</a></li>
+          </ul>
+          </div>
+          <input type="hidden" name="listing[category]" id="categoryInput" required />
+        </div>
+      </div>
+    
+    
+    <div class="row">
+        <div class="mb-3 col-4">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" name="listing[location]" value="<%=listing.location%>" class="form-control" required>
+        <div class="invalid-feedback">Please enter the Location</div>
+        <div class="valid-feedback">Added!</div>
+        </div>
+
+        <div class="mb-3 col-4">
             <label for="country" class="form-label">Country</label>
             <input type="text" name="listing[country]" value="<%=listing.country%>" class="form-control" required>
             <div class="invalid-feedback">Enter country name</div>
             <div class="valid-feedback">added!</div>
         </div>
-    </div>
-    
-    <div>
-        <label for="location" class="form-label">Location</label>
-        <input type="text" name="listing[location]" value="<%=listing.location%>" class="form-control" required>
-        <div class="invalid-feedback">Please enter the Location</div>
-        <div class="valid-feedback">Added!</div>
     </div>
     <br>
     <button class="btn btn-dark post-btn mt-3">Edit</button>
@@ -65,4 +103,17 @@
 </div>
 
 
+<script>
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+  const dropdownButton = document.getElementById('categoryDropdown');
+  const categoryInput = document.getElementById('categoryInput');
 
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const selectedValue = this.getAttribute('value');
+      dropdownButton.textContent = selectedValue; // show chosen item
+      categoryInput.value = selectedValue; // save value for backend
+    });
+  });
+</script>

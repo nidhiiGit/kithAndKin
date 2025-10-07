@@ -1,3 +1,24 @@
+<style>
+  .btn-search{
+    background: #cd5554;
+    color: white;    
+  }
+
+  .btn-search:hover{
+    background: #cd5554;
+    color: white;
+  }
+
+  .search-input{
+    padding: 0.5rem 2.8rem 0.5rem 2.8rem;
+  }
+/* 
+  .btn-search i {
+      display: inline;
+      margin-right: 0.5rem;
+  }   */
+</style>
+
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-solid fa-route"></i></a>
@@ -16,6 +37,23 @@
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
       </div>
+
+      <div class="navbar-nav ms-auto d-flex align-items-center">
+  <form class="d-flex align-items-center" role="search" style="gap: 0.5rem;">
+    <input 
+      class="form-control search-input" 
+      type="search" 
+      placeholder="Search Destinations" 
+      aria-label="Search" 
+      style="width: 250px;"
+    />
+    <button class="btn btn-search d-flex align-items-center" type="submit">
+      <i class="fa-solid fa-magnifying-glass me-1"></i>
+      Search 
+    </button>
+  </form>
+</div>
+
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Become a Kin Host</a>
         <% if(!currUser){ %>
